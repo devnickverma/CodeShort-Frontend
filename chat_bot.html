@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code-Shorts AI</title>
+    <title>CODE-SHORTS.AI</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         /* Ensure the content is scrollable on small screens */
@@ -21,34 +22,39 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top  border-bottom border-top-0" style="background-color: rgb(93, 93, 252)">
+    <nav class="navbar navbar-expand-lg fixed-top border-bottom border-top-0" style="background-color: rgb(93, 93, 252);">
         <div class="container-fluid">
-            <label class="navbar-brand fw-bold text-white" id="codeShortToggle"
-                style="cursor: pointer;">Code Shorts.AI</label>
-            <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- Brand redirects to Home page -->
+            <label class="navbar-brand fw-bold text-white" id="codeShortHome" style="cursor: pointer;">Code Shorts.AI</label>
+
+            <!-- Toggler for mobile view -->
+            <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarIcons"
+                aria-controls="navbarIcons" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link active" aria-current="page" href="/home.html"
-                            style="  color: white; font-weight: 650; margin-left: 65rem; padding-right: 3rem;">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="#
-                            style="  color: white; font-weight: 650; padding-right: 3rem;">New Chat+</a>
-                    </li>
-                    
-                    
 
-                </ul>
-            </div>
-                <ul class="navbar-nav ms-auto">
+            <div class="collapse navbar-collapse" id="navbarIcons">
+                <ul class="navbar-nav ms-auto d-flex align-items-center">
+                    <!-- Sidebar Toggle Icon -->
+                    <li class="nav-item">
+                        <button class="btn text-white" id="sidebarToggle" style="margin-right: 1rem;">
+                            <i class="bi bi-layout-text-sidebar" style="font-size: 1.3rem;"></i> <!-- Sidebar icon -->
+                        </button>
+                    </li>
+
+                    <!-- New Chat Icon -->
+                    <li class="nav-item">
+                        <a class="btn text-white" href="#" id="newChatBtn" style="margin-right: 1rem;">
+                            <i class="fas fa-plus-circle"></i> <!-- New chat icon -->
+                            <strong>New Chat</strong>
+                        </a>
+                    </li>
+
+                    <!-- Profile Icon -->
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-user profile-icon border rounded-circle p-1 text-white" ></i>
+                            <i class="fas fa-user profile-icon border rounded-circle p-1 text-white"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">View Profile</a>
@@ -63,9 +69,9 @@
 
     <!-- Sidebar -->
     <div class="sidebar position-fixed top-0 start-0 w-250 bg-light border-end vh-100" id="sidebar"
-        style="transform: translateX(-100%); transition: transform 0.3s ease; z-index: 1000;">
+        style="transform: translateX(-100%); transition: transform 0.3s ease; z-index: 100000;">
         <h5 class="p-3">History</h5>
-        <div class="p-3">
+        <div class="p-3" id="history">
             <p><strong>October 1, 2024</strong></p>
             <ul class="list-unstyled">
                 <li>Search Query 1</li>
@@ -82,7 +88,7 @@
     <!-- Main Content Centered Using Bootstrap -->
     <div class="d-flex align-items-center justify-content-center vh-100 text-center scrollable-content">
         <div class="container">
-            <h2>Ask Code Shorts AI Anything</h2>
+            <h2>Ask CODE-SHORTS AI Anything</h2>
             <div class="row mt-4 justify-content-center">
                 <!-- Adjusted column sizes to reduce width -->
                 <div class="col-lg-2 col-md-4 mb-3">
@@ -123,15 +129,18 @@
             </button>
             <input type="file" id="file-upload" class="d-none">
             <input type="text" class="form-control" placeholder="Message Code-Short AI...">
-            <button class="btn " style="background-color: rgb(93, 93, 252); color: aliceblue;">Send</button>
+            <button class="btn " style="background-color: rgb(93, 93, 252); color: white;">Send</button>
         </div>
     </div>
 
     <!-- Sidebar Toggle Script -->
     <script>
         const sidebar = document.getElementById('sidebar');
-        const codeShortToggle = document.getElementById('codeShortToggle');
+        const codeShortToggle = document.getElementById('sidebarToggle');
+        const newChatBtn = document.getElementById('newChatBtn');
+        const homeButton = document.getElementById('codeShortHome');
 
+        // Toggle Sidebar
         codeShortToggle.addEventListener('click', function () {
             if (sidebar.style.transform === 'translateX(0%)') {
                 sidebar.style.transform = 'translateX(-100%)';
